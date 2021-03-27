@@ -1,0 +1,295 @@
+body, h1, ul, li, p, dd, dt, dl{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*deixar a imagem responsiva e para que não ultrapasse o container*/
+img{
+display: block;
+max-width: 100%;
+}
+
+ul{
+    list-style: none;
+}
+
+html.textomaior{
+    font-size: 120%;
+}
+
+body{
+    background: #faf6ed;
+    color: #222;
+    display: grid;/*criando as colunas(4) e falando suas especificações*/
+    grid-template-columns: 1fr 120px minmax(200px, 900px) 1fr;
+}
+/*quais linhas de coluna quer que pegue*/
+.dark-mode{
+    background-color: #222;
+    color: #faf6ed;    
+}
+.menu {
+    grid-column: 2/5;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background:#DAA520;
+}
+/* para colocar um item ao lado do outro*/
+.menu ul {
+    display:flex;;
+    flex-wrap: wrap; /*para os itens quebrar caso não caibam dentro*/
+    padding: 10px;
+}
+
+.menu li a{
+    display: block;
+    margin-right: 26px;
+    padding: 15px 10px;
+    text-decoration: none;
+    font-family: "IBM Plex Mono", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    color:#222;
+}
+
+.grid-section {
+    grid-column: 2/4;
+    width:100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 110px 300px 1fr;
+    grid: gap 20px; ;
+    margin-bottom: 40px;
+} 
+
+.titulo {
+    font-style: italic ;
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    grid-column: 1/4;
+}
+
+.animais p {
+    font-family: Arial, Helvetica, Arial;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.animais h2 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 2rem;
+    letter-spacing: .1em;
+    margin-bottom: 1rem;
+    color: #e54;
+}
+
+.animais h2::before{
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 10px;
+    margin-right: 10px;
+    background: #DAA520 ;
+}
+
+.animais-lista {
+    height: 250px;
+    overflow-y: scroll;
+    grid-column: 2;
+}
+.animais-lista li {
+    cursor:pointer;
+}
+
+.animais-lista::-webkit-scrollbar{
+    width: 10px;
+}
+
+
+.animais-lista::-webkit-scrollbar-thumb{
+    background:#DAA520;
+    border-left: 1px solid #faf6ed;
+    border-right: 1px solid #faf6ed;
+}
+
+.animais-lista::-webkit-scrollbar-track{
+    background:#faf6ed;    
+}
+.animais-descricao {
+    grid-column: 3;
+}
+
+.animais-descricao section {
+    margin-bottom: 3rem;
+}
+
+.faq-lista {
+    grid-column: 2/4
+}
+
+.faq-lista dt{
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+    color:#e54;
+    font-size: 2rem;
+}
+
+.faq-lista dt::before{
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    margin-right: 10px;
+    background: #DAA520 ;
+}
+
+.faq-lista dd {
+    font-family: Helvetica, arial;
+    margin-left: .5rem;
+    margin-top: 12px;
+}
+
+.mapa {
+    grid-column: 2;
+    max-width: 100%;
+}
+
+.dados {
+    grid-column: 3;
+}
+
+.dados li {
+    margin-left: 2rem;
+    font-family: Helvetica, Arial;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+.dados li::before {content: "";
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    margin-right: 10px;
+    background: #DAA520 ;
+}
+
+.copy{
+    grid-column: 2/5;
+    margin-bottom: 2rem;
+    background: #DAA520;
+}
+
+.copy p {
+    padding: 20px;
+    font-family: "IBM Plex Mono", monospace;
+}
+
+
+@media(max-width:700px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .menu, .grid-section, .copy {
+        grid-column: 1;
+    }
+    .grid-section {
+        grid-template-columns: 100px 1fr;
+        grid-gap: 10px;
+    }
+    .animais-lista{
+        grid-column: 1;
+     }
+    
+    .faq-lista, .dados, .mapa {
+        grid-column: 1/3;
+    }
+    .grid-section h1 {
+        font-size: 3rem;
+    }
+    .menu {
+        margin-top: 0px;
+    }
+    .copy{
+        margin-bottom: 0px;
+    }
+}
+/* aqui esconde todas as section da classe tabcontent*/
+.js-tabcontent section{
+    display: none;
+}
+/*aqui mostra as section que tiverem a classe ativo*/
+.js-tabcontent section.ativo {
+    display: block;
+    animation: show .7s forwards
+}
+
+/*aqui cria a animação*/
+
+@keyframes show {
+    from {
+        opacity:0;
+        transform: translate3d(-50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.jsAccordionList dt {
+    cursor: pointer;
+    animation: slideUp .7s forwards;
+}
+
+.jsAccordionList dt::after {
+    content: "↴";
+    margin-left: 10px;
+}
+
+.jsAccordionList dt.ativo::after {
+    content: "↵";
+    margin-left: 10px;
+}
+
+
+.jsAccordionList dd {
+  
+  transition: 8s;
+  opacity: 0;  
+  display: none;
+}
+
+.jsAccordionList dd.ativo {
+    display: block;
+    animation: slideDown .7s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+    }
+}
+
+.js-scroll {
+    opacity: 0  ;
+    transform: translate3d(-30px, 0, 0);
+    transition: .3s;
+
+}
+
+.js-scroll.ativo {
+    opacity: 1;
+    transform: translate3d(0px, 0, 0);
+}
